@@ -1,0 +1,17 @@
+Not having to remember variable types is amazing!
+
+Scanner.Scan was really easy to use
+
+There is no ternary operator in Go. You have to write a short if-else.
+
+In dup2, countLines could have been countLines(input io.Reader) instead of countLines(f *os.File)
+
+map variables are references
+
+a built-in set type would have been nice
+
+had to implement contains(haystack, needle)
+
+
+
+
