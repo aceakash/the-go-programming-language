@@ -2,7 +2,6 @@ package main
 
 import "testing"
 import "github.com/stretchr/testify/assert"
-import "strings"
 
 func TestEnsureHttpPrefixDoesNothingIfPrefixAlreadyPresent(t *testing.T) {
 	var tests = []struct {
@@ -32,11 +31,4 @@ func TestEnsureHttpPrefixAddsHttpPrefixIfNotPresent(t *testing.T) {
 	for _, tt := range tests {
 		assert.Equal(t, tt.out, ensureHTTP(tt.in))
 	}
-}
-
-func ensureHTTP(url string) string {
-	if strings.HasPrefix(url, "http://") {
-		return url
-	}
-	return "http://" + url
 }

@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -18,7 +19,7 @@ func goFetch(urls []string) {
 }
 
 func fetchAndDisplayForSingleURL(url string) {
-	resp, err := http.Get(url)
+	resp, err := http.Get(ensureHTTP(url))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
 		os.Exit(1)
@@ -30,4 +31,11 @@ func fetchAndDisplayForSingleURL(url string) {
 		fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
 		os.Exit(1)
 	}
+}
+
+func ensureHTTP(url string) string {
+	if strings.HasPrefix(url, "http://") {
+		return url
+	}
+	return "http://" + url
 }
